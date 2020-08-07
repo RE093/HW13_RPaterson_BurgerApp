@@ -1,0 +1,64 @@
+  <div class="inputForm">
+    <img src="/assets/img/hamburgerSign.gif" class="hamburgerImage">
+    <form>
+      <h2>Add a Burger</h2>
+      <input type="text" id="newB" name="name" autocomplete="off">
+      <button class="submit">Submit</button>
+    </form>
+  </div>
+
+<div class="row">
+  <div class="column">
+    <h2>Fresh Burgers!</h2>
+    <ul>
+      {{#each burger}}
+        {{#unless devoured}}
+          <li>{{burger_name}}<button class="devourButton">Devour</button></li>
+        {{/unless}}
+      {{/each}}
+    </ul>
+  </div>
+  <div class="column">
+    <h2>Devoured Burgers...</h2>
+    <ul>
+      {{#each burger}}
+        {{#if devoured}}
+          <li>{{burger_name}}</li>
+        {{/if}}
+      {{/each}}
+    </ul>
+  </div>
+</div>
+
+<script>
+  $(".devourButton").on("click", function(event) {
+    event.preventDefault()
+    let eatenBurger = $(this).parent().text().replace("Devour", "");
+
+    $.ajax(`/api/burgers/'${eatenBurger}'`, {
+      type: "PUT",
+      data: true
+    }).then(function() {
+      console.log("burger eaten!")
+      location.reload();
+    });
+  });
+
+  $(".submit").on("click", function() {
+    console.log("submitted")
+    event.preventDefault();
+
+    let newBurger = {
+      burger_name: $("#newB").val().trim()
+    };
+
+    $.ajax("/api/burgers", {
+      type: "POST",
+      data: newBurger
+    }).then(function() {
+      console.log("added a new burger!")
+      location.reload();
+    });
+  });
+
+</script>
