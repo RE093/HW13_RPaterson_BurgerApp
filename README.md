@@ -2,8 +2,11 @@
 [![License](https://img.shields.io/badge/License-None%20-lightgrey.svg)]()
 ## Description
 Eat Da Burger! is a restaurant app that lets users input the names of burgers they would like to eat. When a user submits a burgers name it is displayed on the left of the screen. The user can then "devour" the burger and it will move to the right side of the screen. It is made using the MVC design pattern, using an ORM with node JS, Express JS, Handlebars and the MySQL database.
+## Deployed
+https://radiant-shelf-31788.herokuapp.com/
 ## Table of Contents
 - [Description](#Description)
+- [Deployed](#Deployed)
 - [Installation Instructions](#Installation-Instructions)
 - [Usage Information](#Usage-Information)
 - [Contribution Guidelines](#Contribution-Guidelines)
