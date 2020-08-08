@@ -2,9 +2,7 @@ const express = require("express");
 const router =  express.Router();
 const burger = require("../models/burger.js");
 
-// Get all data from orm database and render it to the index html
 router.get("/index", function(req, res) {
-    console.log("first route")
     burger.selectAll(function(data) {
         let hbsObject = {
             burger: data
@@ -24,8 +22,6 @@ router.post("/api/burgers", function(req, res) {
 
 router.put("/api/burgers/:name", function(req, res) {
     let condition = "burger_name = " + req.params.name;
-    console.log("condition", condition);
-
     burger.updateOne({
         devoured: true
     }, condition, function(result) {
